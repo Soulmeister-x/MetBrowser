@@ -13,6 +13,6 @@ class SearchResultRepositoryImpl(
     override suspend fun getTestObject(id: Int): SearchResult =
         metBrowserService.getTestObject(id)
 
-    override suspend fun getResultsIds(): SearchResultList =
-        metBrowserService.getFlowerResults()
+    override suspend fun getResultsIds(search: String): SearchResultList =
+        metBrowserService.searchObjectIds(search)
 }
