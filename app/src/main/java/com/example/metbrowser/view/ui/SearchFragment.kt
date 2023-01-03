@@ -30,6 +30,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         savedInstanceState: Bundle?
     ): View? {
 
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
 
         // Setup button to fetch new SearchResult
         binding.btSearch.setOnClickListener {
