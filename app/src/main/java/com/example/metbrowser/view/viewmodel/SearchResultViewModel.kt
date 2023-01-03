@@ -41,10 +41,10 @@ class SearchResultViewModel @Inject constructor(
         }
     }
 
-    fun loadResultIds() {
+    fun loadResultIds(search: String) {
         viewModelScope.launch {
             try {
-                _resultIds.value = searchResultRepository.getResultsIds()
+                _resultIds.value = searchResultRepository.getResultsIds(search)
             } catch (e: Exception) {
                 // Retrofit error
                 e.printStackTrace()

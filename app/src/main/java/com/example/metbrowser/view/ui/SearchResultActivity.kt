@@ -25,7 +25,8 @@ class SearchResultActivity : AppCompatActivity() {
 
         // Setup button to fetch new SearchResult
         binding.btSearch.setOnClickListener {
-            searchResultViewModel.loadSearchResult()
+            searchResultViewModel.loadResultIds(binding.etSearchInput.toString())
+
         }
 
         // Setup view model observer to populate view upon response
@@ -45,9 +46,8 @@ class SearchResultActivity : AppCompatActivity() {
                 }
             }
         }
+
         searchResultViewModel.searchResult.observe(this, searchResultObserver)
 
-        // load data at start
-        searchResultViewModel.loadResultIds()
     }
 }
