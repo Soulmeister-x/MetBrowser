@@ -12,6 +12,19 @@
         android:orientation="vertical"
         android:padding="8dp">
 
+        <EditText
+            android:id="@+id/et_search_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <Button
+            android:id="@+id/bt_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:layout_gravity="center" />
+
         <TextView
             android:id="@+id/tv_search_result_title"
             android:layout_width="match_parent"
@@ -35,12 +48,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <Button
-            android:id="@+id/bt_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search"
-            android:layout_gravity="center" />
 
     </LinearLayout>
 

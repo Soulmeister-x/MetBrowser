@@ -9,6 +9,6 @@ interface MetBrowserService {
     @GET("public/collection/v1/objects/{id}")
     suspend fun getTestObject(@Path(value = "id") id: Int): SearchResult
 
-    @GET("public/collection/v1/search?q=flower")
-    suspend fun getFlowerResults(): SearchResultList
+    @GET("public/collection/v1/search?q={search}")
+    suspend fun searchObjectIds(@Path(value = "search") search: String): SearchResultList
 }

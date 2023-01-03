@@ -10,7 +10,9 @@ import com.example.metbrowser.service.api.MetBrowserService
 class SearchResultRepository(
     private val metBrowserService: MetBrowserService
 ) {
-    suspend fun getTestObject(id: Int): SearchResult = metBrowserService.getTestObject(id)
+    suspend fun getTestObject(id: Int): SearchResult =
+        metBrowserService.getTestObject(id)
 
-    suspend fun getResultsIds(): SearchResultList = metBrowserService.getFlowerResults()
+    suspend fun getResultsIds(search: String): SearchResultList =
+        metBrowserService.searchObjectIds(search)
 }
