@@ -2,6 +2,7 @@ package com.example.metbrowser.di
 
 import com.example.metbrowser.service.api.MetBrowserService
 import com.example.metbrowser.service.repository.SearchResultRepository
+import com.example.metbrowser.service.repository.SearchResultRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,5 +21,5 @@ object RepositoryModule {
     fun provideSearchResultRepository(
         metBrowserService: MetBrowserService
     ): SearchResultRepository =
-        SearchResultRepository(metBrowserService)
+        SearchResultRepositoryImpl(metBrowserService)
 }
