@@ -33,7 +33,7 @@
         <ImageView
             android:id="@+id/iv_primary_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="350dp"/>
 
         <Button
             android:id="@+id/bt_search"

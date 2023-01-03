@@ -34,10 +34,15 @@ class SearchResultActivity : AppCompatActivity() {
             binding.tvSearchResultTitle.text = "${newSearchResult.objectId}: ${newSearchResult.title}"
             binding.tvSearchArtist.text = newSearchResult.artist
 
-            lifecycleScope.launch {
-                Picasso.get()
-                    .load(newSearchResult.primaryImage)
-                    .into(binding.ivPrimaryImage)
+            if ("".equals(newSearchResult.primaryImage)) {
+                binding.ivPrimaryImage.setImageResource(0)
+            }
+            else {
+                lifecycleScope.launch {
+                    Picasso.get()
+                        .load(newSearchResult.primaryImage)
+                        .into(binding.ivPrimaryImage)
+                }
             }
         }
         searchResultViewModel.searchResult.observe(this, searchResultObserver)
