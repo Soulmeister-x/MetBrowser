@@ -1,26 +1,22 @@
 package com.example.metbrowser.view.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.metbrowser.model.SearchResult
 import com.example.metbrowser.model.SearchResultList
 import com.example.metbrowser.service.repository.SearchResultRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-/**
- * VM which is responsible for interacting with the repository
- * and provides data to the view components.
- */
 @HiltViewModel
-class SearchResultViewModel @Inject constructor(
+class SearchViewModel @Inject constructor(
     private val searchResultRepository: SearchResultRepository
 ): ViewModel() {
+    // TODO: Implement the ViewModel
 
-    private val _searchResult = MutableLiveData<SearchResult>()
+        private val _searchResult = MutableLiveData<SearchResult>()
     val searchResult: LiveData<SearchResult> = _searchResult
 
     private val _resultIds = MutableLiveData<SearchResultList>()
@@ -28,6 +24,13 @@ class SearchResultViewModel @Inject constructor(
 
     private var counter = MutableLiveData<Int>(0)
 
+    init {
+        Log.d("global", "SearchViewModel init() called")
+        _searchResult.value?.title = "MyTitle"
+        _searchResult.value?.objectId = 69
+    }
+
+    /*
     fun loadSearchResult() {
         viewModelScope.launch {
             try {
@@ -51,4 +54,5 @@ class SearchResultViewModel @Inject constructor(
             }
         }
     }
+     */
 }
