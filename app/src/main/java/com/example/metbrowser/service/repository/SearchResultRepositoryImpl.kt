@@ -1,5 +1,6 @@
 package com.example.metbrowser.service.repository
 
+import android.util.Log
 import com.example.metbrowser.model.SearchResult
 import com.example.metbrowser.model.SearchResultList
 import com.example.metbrowser.service.api.MetBrowserService
@@ -10,9 +11,10 @@ import com.example.metbrowser.service.api.MetBrowserService
 class SearchResultRepositoryImpl(
     private val metBrowserService: MetBrowserService
 ): SearchResultRepository {
-    override suspend fun getTestObject(id: Int): SearchResult =
-        metBrowserService.getTestObject(id)
+    override suspend fun getObject(id: Int): SearchResult =
+        metBrowserService.getObject(id)
 
-    override suspend fun getResultsIds(): SearchResultList =
-        metBrowserService.getFlowerResults()
+    override suspend fun getResultsIds(search: String): SearchResultList {
+        return metBrowserService.getObjectIds(search)
+    }
 }

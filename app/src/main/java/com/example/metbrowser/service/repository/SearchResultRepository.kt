@@ -7,7 +7,7 @@ import com.example.metbrowser.model.SearchResultList
  * The goal of this class is to abstract the data source from the rest of the app.
  */
 interface SearchResultRepository{
-    suspend fun getTestObject(id: Int): SearchResult
+    suspend fun getObject(id: Int): SearchResult
 
-    suspend fun getResultsIds(): SearchResultList
+    suspend fun getResultsIds(search: String): SearchResultList
 }

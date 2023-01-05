@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.ui.SearchFragment">
 
     <LinearLayout
@@ -10,29 +11,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_title"
+        <EditText
+            android:id="@+id/et_search_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:textColor="@color/black"
-            android:gravity="center" />
-
-        <TextView
-            android:layout_marginTop="20dp"
-            android:id="@+id/tv_artist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:textColor="@color/black"
-            android:gravity="center"/>
-
-
-        <ImageView
-            android:id="@+id/iv_primary_image"
-            android:layout_width="match_parent"
-            android:layout_height="350dp"/>
-
+            android:gravity="center"
+            tools:text="Search Something"/>
 
         <Button
             android:id="@+id/bt_search"
@@ -40,6 +24,11 @@
             android:layout_height="wrap_content"
             android:text="Search"
             android:layout_gravity="center" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_output_obj_ids"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 </ScrollView>
