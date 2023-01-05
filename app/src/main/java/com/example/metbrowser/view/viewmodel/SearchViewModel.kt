@@ -9,6 +9,7 @@ import com.example.metbrowser.model.SearchResult
 import com.example.metbrowser.model.SearchResultList
 import com.example.metbrowser.service.repository.SearchResultRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,13 +25,12 @@ class SearchViewModel @Inject constructor(
     private val _resultIds = MutableLiveData<SearchResultList>()
     val resultIds: LiveData<SearchResultList> = _resultIds
 
-    init {
-    }
-
     fun loadSearchResult(id: Int) {
         viewModelScope.launch {
             try {
                 _searchResult.value = searchResultRepository.getObject(id)
+                val v2 = searchResult.value
+                Log.d(TAG, "binding detail: ${v2.toString()}")
             } catch (e: Exception) {
                 // Retrofit error
                 e.printStackTrace()

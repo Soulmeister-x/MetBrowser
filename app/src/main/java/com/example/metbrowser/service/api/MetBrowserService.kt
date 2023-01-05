@@ -7,13 +7,10 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MetBrowserService {
-    @GET("public/collection/v1/objects")
+    @GET("public/collection/v1/objects/{id}")
     suspend fun getObject(
-        @Query("id") id: Int
+        @Path("id") id: Int
     ): SearchResult
-
-    @GET("public/collection/v1/search?q=flower")
-    suspend fun getFlowerResults(): SearchResultList
 
     @GET("public/collection/v1/search")
     suspend fun getObjectIds(

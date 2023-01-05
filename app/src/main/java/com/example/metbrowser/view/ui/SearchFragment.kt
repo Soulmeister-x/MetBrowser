@@ -7,10 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.metbrowser.R
 import com.example.metbrowser.databinding.FragmentSearchBinding
 import com.example.metbrowser.model.SearchResultList
 import com.example.metbrowser.view.adapter.SearchResultAdapter
@@ -20,7 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
 private const val TAG = "SearchFragment"
 
 @AndroidEntryPoint
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment(), SearchResultAdapter.ListItemClickListener {
 
     private val viewModel: SearchViewModel by activityViewModels()
 
@@ -40,7 +45,7 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapterx = SearchResultAdapter(viewModel)
+        adapterx = SearchResultAdapter( this )
 
         // init adapter
         binding.rvOutputObjIds.apply {
@@ -57,7 +62,6 @@ class SearchFragment : Fragment() {
         val searchResultObserver = Observer<SearchResultList> { newSearch ->
             // New search result received from API
             adapterx.submitList( newSearch.objectIds )
-            Log.d(TAG, "x list submitted: ${newSearch.total} results")
         }
         viewModel.resultIds.observe(viewLifecycleOwner, searchResultObserver)
 
@@ -68,9 +72,16 @@ class SearchFragment : Fragment() {
         _binding = null
     }
 
-    fun closeKeyboard() {
+    private fun closeKeyboard() {
         val manager = activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         manager.hideSoftInputFromWindow(activity?.currentFocus?.windowToken,0)
+    }
+
+    override fun onItemClicked(objectId: Int, position: Int) {
+        viewModel.loadSearchResult(objectId)
+        Toast.makeText(requireContext(),"ItemClickListener called", Toast.LENGTH_SHORT)
+        val bundle = bundleOf("objectId" to objectId)
+        findNavController().navigate(R.id.action_searchFragment_to_detailFragment, bundle)
     }
 
 

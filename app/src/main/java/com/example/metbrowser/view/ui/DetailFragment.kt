@@ -1,14 +1,20 @@
 package com.example.metbrowser.view.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import com.example.metbrowser.databinding.FragmentDetailBinding
 import com.example.metbrowser.model.SearchResult
+import com.example.metbrowser.model.SearchResultList
 import com.example.metbrowser.view.viewmodel.SearchViewModel
+import com.example.metbrowser.view.viewmodel.SearchViewModel_Factory
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,7 +35,7 @@ class DetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
         return binding.root
@@ -38,12 +44,31 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // bind data from viewmodel to ui
-        bind(viewModel.searchResult.value)
 
+        //viewModel = ViewModelProvider(requireParentFragment()).get(SearchViewModel::class.java)
+
+        val id = arguments?.getInt("objectId")!!
+        viewModel.loadSearchResult(id)
+
+        val item: SearchResult? = viewModel.searchResult.value
+
+
+        val searchResultObserver = Observer<SearchResult> { newSearch ->
+        Log.d(TAG, "objId: $id  ;  viewmodel: ${viewModel.searchResult.value?.objectId}")
+            // New search result received from API
+            // bind data from viewmodel to ui
+            Log.d(TAG, "binding ${item?.objectId} - $id - newSearch: ${newSearch.objectId}")
+            if (item != null)
+                bind(item)
+            else
+                Log.e(TAG, "error while binding item ${id}")
+        }
+
+        viewModel.searchResult.observe(viewLifecycleOwner, searchResultObserver)
     }
 
     private fun bind(item: SearchResult?) {
+        Log.d(TAG, "binding ${item?.objectId}")
         item?.let {
             binding.tvTitle.text = it.title
             binding.tvArtist.text = it.artist
