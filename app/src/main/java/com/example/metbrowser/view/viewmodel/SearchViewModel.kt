@@ -9,7 +9,6 @@ import com.example.metbrowser.model.SearchResult
 import com.example.metbrowser.model.SearchResultList
 import com.example.metbrowser.service.repository.SearchResultRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -42,7 +41,6 @@ class SearchViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 _resultIds.value = searchResultRepository.getResultsIds(search)
-                Log.d(TAG, "fetched results: ${resultIds.value?.total}")
             } catch (e: Exception) {
                 // Retrofit error
                 e.printStackTrace()

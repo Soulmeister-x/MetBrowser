@@ -34,4 +34,14 @@ data class SearchResult(
     @Expose
     var objectUrl: String
 
-)
+) {
+    override fun toString(): String {
+        return "SearchResult" +
+                "\nobjectId=$objectId," +
+                "\nprimaryImage=$primaryImage," +
+                "\nadditionalImages=$additionalImages," +
+                "\ntitle=$title," +
+                "\nartist=$artist," +
+                "\nobjectUrl=$objectUrl"
+    }
+}

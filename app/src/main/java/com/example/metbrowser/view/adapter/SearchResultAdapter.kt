@@ -25,7 +25,6 @@ class SearchResultAdapter(private val listItemClickListener: ListItemClickListen
         }
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultViewHolder {
         val binding = SearchResultListItemBinding
             .inflate(LayoutInflater.from(parent.context),parent, false)

@@ -2,17 +2,14 @@ package com.example.metbrowser.view.ui
 
 import android.app.Activity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.metbrowser.R
@@ -64,7 +61,6 @@ class SearchFragment : Fragment(), SearchResultAdapter.ListItemClickListener {
             adapterx.submitList( newSearch.objectIds )
         }
         viewModel.resultIds.observe(viewLifecycleOwner, searchResultObserver)
-
     }
 
     override fun onDestroy() {
@@ -78,8 +74,8 @@ class SearchFragment : Fragment(), SearchResultAdapter.ListItemClickListener {
     }
 
     override fun onItemClicked(objectId: Int, position: Int) {
-        viewModel.loadSearchResult(objectId)
-        Toast.makeText(requireContext(),"ItemClickListener called", Toast.LENGTH_SHORT)
+        // TODO: decide whether to loadSearchResult in [SearchFragment] or [DetailFragment]
+        //viewModel.loadSearchResult(objectId)
         val bundle = bundleOf("objectId" to objectId)
         findNavController().navigate(R.id.action_searchFragment_to_detailFragment, bundle)
     }

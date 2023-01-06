@@ -1,13 +1,7 @@
 package com.example.metbrowser.view.ui
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.inputmethod.InputMethodManager
-import androidx.core.content.getSystemService
-import androidx.fragment.app.FragmentContainerView
-import com.example.metbrowser.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.metbrowser.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

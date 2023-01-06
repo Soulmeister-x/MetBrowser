@@ -1,6 +1,5 @@
 package com.example.metbrowser.service.repository
 
-import android.util.Log
 import com.example.metbrowser.model.SearchResult
 import com.example.metbrowser.model.SearchResultList
 import com.example.metbrowser.service.api.MetBrowserService
