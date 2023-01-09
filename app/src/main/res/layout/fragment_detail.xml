@@ -12,13 +12,24 @@
         android:orientation="vertical"
         android:padding="20dp">
 
+        <include
+            android:id="@+id/id_primary_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/item_single_image" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <!-- TODO: wrap in cardView
         <ImageView
             android:id="@+id/iv_primary_image"
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:importantForAccessibility="no"/>
+        -->
 
-        <!-- TODO: wrap in cardView-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_additional_images"
             android:layout_width="match_parent"

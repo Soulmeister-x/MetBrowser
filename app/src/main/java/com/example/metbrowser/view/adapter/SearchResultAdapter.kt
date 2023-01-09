@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.metbrowser.databinding.SearchResultListItemBinding
+import com.example.metbrowser.databinding.ItemListSearchResultBinding
 
 
 class SearchResultAdapter(private val listItemClickListener: ListItemClickListener)
@@ -26,7 +26,8 @@ class SearchResultAdapter(private val listItemClickListener: ListItemClickListen
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultViewHolder {
-        val binding = SearchResultListItemBinding
+
+        val binding = ItemListSearchResultBinding
             .inflate(LayoutInflater.from(parent.context),parent, false)
         return SearchResultViewHolder(binding)
     }
@@ -37,7 +38,7 @@ class SearchResultAdapter(private val listItemClickListener: ListItemClickListen
     }
 
 
-    inner class SearchResultViewHolder(private val binding:SearchResultListItemBinding)
+    inner class SearchResultViewHolder(private val binding:ItemListSearchResultBinding)
         : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(objectId: Int) {

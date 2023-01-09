@@ -33,6 +33,7 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="opacityPercent" value="50" />
                             <entry key="outputName" value="ic_image_not_available" />
                           </map>
                         </option>

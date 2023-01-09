@@ -6,11 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.metbrowser.R
 import com.example.metbrowser.databinding.FragmentSearchBinding
@@ -24,7 +28,7 @@ private const val TAG = "SearchFragment"
 @AndroidEntryPoint
 class SearchFragment : Fragment(), SearchResultAdapter.ListItemClickListener {
 
-    private val viewModel: SearchViewModel by activityViewModels()
+    private val viewModel: SearchViewModel by viewModels()
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
@@ -74,10 +78,8 @@ class SearchFragment : Fragment(), SearchResultAdapter.ListItemClickListener {
     }
 
     override fun onItemClicked(objectId: Int, position: Int) {
-        // TODO: decide whether to loadSearchResult in [SearchFragment] or [DetailFragment]
-        //viewModel.loadSearchResult(objectId)
-        val bundle = bundleOf("objectId" to objectId)
-        findNavController().navigate(R.id.action_searchFragment_to_detailFragment, bundle)
+        val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(objectId = objectId)
+        findNavController().navigate(action)
     }
 
 

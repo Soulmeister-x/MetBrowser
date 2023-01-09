@@ -19,10 +19,16 @@
         android:name="com.example.metbrowser.view.ui.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="objectId"
+            app:argType="integer"
+            android:defaultValue="-1"/>
+    </fragment>
+<!--
         <action
             android:id="@+id/action_detailFragment_to_searchFragment"
             app:destination="@id/searchFragment"
             app:popUpToInclusive="true"
             app:popUpTo="@id/searchFragment"/>
-    </fragment>
+-->
 </navigation>
