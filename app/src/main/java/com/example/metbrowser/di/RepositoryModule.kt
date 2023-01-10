@@ -1,8 +1,8 @@
 package com.example.metbrowser.di
 
-import com.example.metbrowser.service.api.MetBrowserService
-import com.example.metbrowser.service.repository.SearchResultRepository
-import com.example.metbrowser.service.repository.SearchResultRepositoryImpl
+import com.example.metbrowser.functionality.data.api.MetBrowserService
+import com.example.metbrowser.functionality.abstractions.SearchResultRepository
+import com.example.metbrowser.functionality.data.api.SearchResultRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

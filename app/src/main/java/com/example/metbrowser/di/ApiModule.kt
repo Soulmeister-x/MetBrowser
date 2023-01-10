@@ -1,6 +1,6 @@
 package com.example.metbrowser.di
 
-import com.example.metbrowser.service.api.MetBrowserService
+import com.example.metbrowser.functionality.data.api.MetBrowserService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

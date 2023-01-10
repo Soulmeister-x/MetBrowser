@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.metbrowser.view.ui.SearchFragment"
+        android:name="com.example.metbrowser.ui.ui.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.metbrowser.view.ui.DetailFragment"
+        android:name="com.example.metbrowser.ui.ui.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
         <argument
@@ -24,11 +24,4 @@
             app:argType="integer"
             android:defaultValue="-1"/>
     </fragment>
-<!--
-        <action
-            android:id="@+id/action_detailFragment_to_searchFragment"
-            app:destination="@id/searchFragment"
-            app:popUpToInclusive="true"
-            app:popUpTo="@id/searchFragment"/>
--->
 </navigation>
